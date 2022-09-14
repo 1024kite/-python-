@@ -1,0 +1,240 @@
+from tkinter import *
+from tkinter import font
+
+
+def strerror(str):
+    try:
+        float(str)
+    except ValueError:
+        return '这不是整型'
+    else:
+        return '这是整型'
+
+def label(title, str):
+    root = Tk()
+    root.title(title)
+    root.geometry('480x200')
+    label = Label(root, text=str, font=("Arial Bold", 25))
+    label.pack(side='top', expand='yes', fill='both')
+    def exit():
+        root.destroy()
+    btn = Button(root, text='关闭窗口', bg='#C0C0C0', command=exit)
+    btn.pack(side='top', fill='x', padx=5, pady=5)
+    root.mainloop()
+def text(title, str):
+    root = Tk()
+    root.title(title)
+    root.geometry('480x200')
+    root.font = font.Font(font=('Arial Bold', 20, font.BOLD))
+    s2 = Scrollbar(root, orient=HORIZONTAL)
+    s2.pack(side=BOTTOM, fill=X)
+    textpad = Text(root, width=200, xscrollcommand=s2.set, wrap='none')
+    textpad.pack(expand=YES, fill=BOTH)
+    textpad.config(font=root.font)
+    textpad.insert(INSERT, '答案过大，只能如此表示（最大化后会出现按钮）' + '\n')
+    textpad.insert(INSERT, str)
+    textpad.insert(INSERT, '                                                                               ')
+    s2.config(command=textpad.xview)
+    def exit():
+        root.destroy()
+    def button_1():
+        def button_2():
+            def button_3():
+                def button_4():
+                    def button_5():
+                        def button_6():
+                            def button_7():
+                                btn_8 = Button(root, text='看右边（坏笑）')
+                                btn_8.pack()
+                                textpad.insert(INSERT, '你被耍了')
+                            btn_7 = Button(root, text='看来只有采取行动了！！！', command=button_7)
+                            btn_7.pack()
+                        btn_6 = Button(root, text='还执迷不悟？！', command=button_6)
+                        btn_6.pack()
+                    btn_5 = Button(root, text='你知道我为此敲了多少代码吗！', command=button_5)
+                    btn_5.pack()
+                btn_4 = Button(root, text='你怎么这样呢', command=button_4)
+                btn_4.pack()
+            btn_3 = Button(root, text='点了你会后悔的', command=button_3)
+            btn_3.pack()
+        btn_2 = Button(root, text='真的别点', command=button_2)
+        btn_2.pack()
+    btn = Button(root, text='关闭窗口', bg='#C0C0C0', command=exit)
+    btn.pack(side='top', fill='x', padx=5, pady=5)
+    btn_1 = Button(root, text='千万别点我', command=button_1)
+    btn_1.pack()
+    root.mainloop()
+
+
+def entry_1():
+    root = Tk()
+    root.title('请输入数据')
+    root.geometry('480x200')
+    entry_1 = Entry(root, bd=5, font='华文行楷', width=40)
+    entry_1.insert(0, '请输入加数（输入时请删去此内容）')
+    entry_1.pack(padx=20, pady=5)
+    entry_2 = Entry(root, bd=5, font='华文行楷', width=40)
+    entry_2.insert(0, '请输入加数（输入时请删去此内容）')
+    entry_2.pack(pady=20)
+    def determine():
+        entry_1_text = entry_1.get()
+        entry_2_text = entry_2.get()
+        if strerror(entry_1_text) == '这不是整型' or strerror(entry_2_text) == '这不是整型':
+            label('提示', '这个数据不合理')
+        else:
+            entry = float(entry_1_text) + float(entry_2_text)
+            if len(str(entry)) <= 19:
+                label('结果', '答案是' + str(entry))
+            else:
+                text('结果', '答案是' + str(entry))
+    def destory():
+        root.destroy()
+    button_determine = Button(root,  bd=5, text='确定计算', bg='#C0C0C0', padx=10, command=determine)
+    button_determine.pack()
+    button_destroy = Button(root,  bd=5, text='关闭窗口', bg='#C0C0C0', padx=10, command=destory)
+    button_destroy.pack()
+    root.mainloop()
+def entry_2():
+    root = Tk()
+    root.title('请输入数据')
+    root.geometry('480x200')
+    entry_1 = Entry(root, bd=5, font='华文行楷', width=40)
+    entry_1.insert(0, '请输入被减数（输入时请删去此内容）')
+    entry_1.pack(padx=20, pady=5)
+    entry_2 = Entry(root, bd=5, font='华文行楷', width=40)
+    entry_2.insert(0, '请输入减数（输入时请删去此内容）')
+    entry_2.pack(pady=20)
+    def determine():
+        entry_1_text = entry_1.get()
+        entry_2_text = entry_2.get()
+        if entry_1_text == '纸鸢1024' and entry_2_text == 'CSDN':
+            def btn_1():
+                def btn_2():
+                    def btn_3():
+                        text('纸鸢的CSDN', 'CSDN网址（别管上面）：https://blog.csdn.net/m0_71220643?spm=1000.2115.3001.5343')
+                    button_3 = Button(root, text='好吧，看就看吧……我也想涨点粉了（必须关注哦！！！）', command=btn_3)
+                    button_3.pack()
+                button_2 = Button(root, text='这里不允许你进入', command=btn_2)
+                button_2.pack()
+            button_1 = Button(root, text='你想干什么！（最大化看我）', command=btn_1)
+            button_1.pack()
+        elif strerror(entry_2_text) == '这不是整型' or strerror(entry_1_text) == '这不是整型':
+            label('提示', '这个数据不合理')
+        else:
+            entry = float(entry_1_text) - float(entry_2_text)
+            if len(str(entry)) <= 19:
+                label('结果', '答案是' + str(entry))
+            else:
+                text('结果', '答案是' + str(entry))
+    def destory():
+        root.destroy()
+    button_determine = Button(root,  bd=5, text='确定计算', bg='#C0C0C0', padx=10, command=determine)
+    button_determine.pack()
+    button_destroy = Button(root,  bd=5, text='关闭窗口', bg='#C0C0C0', padx=10, command=destory)
+    button_destroy.pack()
+    root.mainloop()
+def entry_3():
+    root = Tk()
+    root.title('请输入数据')
+    root.geometry('480x200')
+    entry_1 = Entry(root, bd=5, font='华文行楷', width=40)
+    entry_1.insert(0, '请输入因数（输入时请删去此内容）')
+    entry_1.pack(padx=20, pady=5)
+    entry_2 = Entry(root, bd=5, font='华文行楷', width=40)
+    entry_2.insert(0, '请输入因数（输入时请删去此内容）')
+    entry_2.pack(pady=20)
+    def determine():
+        entry_1_text = entry_1.get()
+        entry_2_text = entry_2.get()
+        if strerror(entry_1_text) == '这不是整型' or strerror(entry_2_text) == '这不是整型':
+            label('提示', '这个数据不合理')
+        else:
+            entry = float(entry_1_text) * float(entry_2_text)
+            if len(str(entry)) <= 19:
+                label('结果', '答案是' + str(entry))
+            else:
+                text('结果', '答案是' + str(entry))
+    def destory():
+        root.destroy()
+    button_determine = Button(root,  bd=5, text='确定计算', bg='#C0C0C0', padx=10, command=determine)
+    button_determine.pack()
+    button_destroy = Button(root,  bd=5, text='关闭窗口', bg='#C0C0C0', padx=10, command=destory)
+    button_destroy.pack()
+    root.mainloop()
+def entry_4():
+    root = Tk()
+    root.title('请输入数据')
+    root.geometry('480x200')
+    entry_1 = Entry(root, bd=5, font='华文行楷', width=40)
+    entry_1.insert(0, '请输入被除数（输入时请删去此内容）')
+    entry_1.pack(padx=20, pady=5)
+    entry_2 = Entry(root, bd=5, font='华文行楷', width=40)
+    entry_2.insert(0, '请输入除数（输入时请删去此内容）')
+    entry_2.pack(pady=20)
+    def determine():
+        entry_1_text = entry_1.get()
+        entry_2_text = entry_2.get()
+        if strerror(entry_1_text) == '这不是整型' or strerror(entry_2_text) == '这不是整型':
+            label('提示', '这个数据不合理')
+        elif entry_2_text == '0':
+            label('提示', '除数不能是0')
+        else:
+            entry = float(entry_1_text) / float(entry_2_text)
+            if len(str(entry)) <= 19:
+                label('结果', '答案是' + str(entry))
+            else:
+                text('结果', '答案是' + str(entry))
+    def destory():
+        root.destroy()
+    button_determine = Button(root,  bd=5, text='确定计算', bg='#C0C0C0', padx=10, command=determine)
+    button_determine.pack()
+    button_destroy = Button(root,  bd=5, text='关闭窗口', bg='#C0C0C0', padx=10, command=destory)
+    button_destroy.pack()
+    root.mainloop()
+
+def additions_radiobutton():
+    root = Tk()
+    root.title('选择')
+    label = Label(root, text='请选择要哪种运算', font=('华文行楷', 15))
+    root.geometry('480x200')
+    label.pack()
+    def additions_1():
+        entry_1()
+    def additions_2():
+        entry_2()
+    def additions_3():
+        entry_3()
+    def additions_4():
+        entry_4()
+    def close():
+        root.destroy()
+    button_1 = Button(root, bd=5, text='加法', bg='#C0C0C0', padx=10, command=additions_1)
+    button_2 = Button(root, bd=5, text='减法', bg='#C0C0C0', padx=10, command=additions_2)
+    button_3 = Button(root, bd=5, text='乘法', bg='#C0C0C0', padx=10, command=additions_3)
+    button_4 = Button(root, bd=5, text='除法', bg='#C0C0C0', padx=10, command=additions_4)
+    button_5 = Button(root, bd=5, text='关闭', bg='#C0C0C0', padx=10, command=close)
+    button_1.pack()
+    button_2.pack()
+    button_3.pack()
+    button_4.pack()
+    button_5.pack()
+    root.mainloop()
+def decorator_radiobutton():
+    root = Tk()
+    root.title('选择')
+    label = Label(root, text='请选择是否要开始运算', font=('华文行楷', 15))
+    root.geometry('480x200')
+    label.pack()
+
+    def get():
+        additions_radiobutton()
+    button_1 = Button(root, bd=5, text='是，开始计算', bg='#C0C0C0', padx=10, command=get)
+    def close():
+        root.destroy()
+    button_2 = Button(root, bd=5, text='否，停止计算', bg='#C0C0C0', padx=10, command=close)
+    button_1.pack()
+    button_2.pack()
+    root.mainloop()
+
+
+decorator_radiobutton()
